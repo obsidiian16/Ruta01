@@ -148,7 +148,7 @@ def distribution_Data(label):
     fig.suptitle(str(label.name)+ ' Distribution')
     fig.show()
 
-    return fig
+    #return fig
 
 # ----------------------- DATOS CUALITATIVOS -----------------------------------
 
@@ -437,8 +437,30 @@ def cut_cuantiles(data:pandas.DataFrame, name_column: str, rango: float, type_cu
 
 
 
+# Crear una funcion para identificar si una variable puede ser categorizada como cuantitativa o cualitativa, 
+#   es decir, si puede ser una variable categorica o continua
+
+def tipo_variable(data: pandas.DataFrame, col: str):
+    '''Muestra si la variable (columna ingresada), es de tipo categorico (cualitativa),
+    continua (cuantitativa).
+    
+    data[pandas.Dataframe]  : Set de datos
+    col[str]                : nombre de la columna que se desea analizar
+    '''
+    tipo_dato_var = data[col].dtype
+
+    if tipo_dato_var == str:
+        return 'Variable Categorica Textual'
+    else:
+        if tipo_dato_var == int:
+            return 'Variable Categorica Numerica'
+        elif tipo_dato_var == bool:
+            return'Variable Categorica Booleana'
+        else: return 'o'
+
 
 # CREAR FUNCION PARA RECORTAR OUTLIERS DE SET DE DATOS (por desviacion estandar)
+
 # PASTILLERO INTELIGENTE XD (CON ALARMA INCLUIDA)
 
 
